@@ -1,2 +1,2 @@
 # scraper
-Python data scraper
+Python data scraper for grocery prices
