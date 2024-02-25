@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from models.base import PriceExtractor, TitleExtractor
 import time
-import os
 
 def initialize_driver():
     # Initialize the WebDriver
@@ -10,7 +10,7 @@ def initialize_driver():
 
 def auto_scroll(driver):
     y = 1000
-    for timer in range(0, 9):
+    for timer in range(0, 10):
         driver.execute_script("window.scrollTo(0, " + str(y) + ")")
         y += 500
         time.sleep(1)
@@ -26,19 +26,12 @@ def auto_scroll_and_extract_prices(driver):
         privacyBtn.click()
         auto_scroll(driver)
 
-        # Find elements with the attribute 'data-testid' set to 'price'
-        price_elements = driver.find_elements(By.CSS_SELECTOR, 'p[data-testid="price"]')
-        title_elements = driver.find_elements(By.CSS_SELECTOR, 'h3[data-testid="product-title"]')
+        # Extract data
+        title_model = TitleExtractor
+        title_model.extract_data(driver)
 
-        # Extract text from each price element and store it in a list
-        prices = [element.text for element in price_elements]
-        titles = [element.text for element in title_elements]
+        price_model = PriceExtractor
+        price_model.extract_data(driver)
 
-        # Print the list of prices to the console
-        for price, title in zip(prices, titles):
-            if "sale" not in price.lower():
-                print(f"Title: {title} - Price: {price}")
-
-
-    except:
-        print("An error occurred")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")

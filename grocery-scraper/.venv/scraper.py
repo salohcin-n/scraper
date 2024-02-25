@@ -1,11 +1,11 @@
-from util.functions import initialize_driver, auto_scroll_and_extract_prices
+from models.vegetables.fresh import FreshExtractor
 
-# Initialize the WebDriver
-driver = initialize_driver()
+def main():
+    # Create an instance of FreshExtractor
+    extractor = FreshExtractor()
 
-# Open a webpage and perform actions
-auto_scroll_and_extract_prices(driver)
+    # Run the extraction process
+    extractor.run()
 
-# Close the browser
-driver.quit()
-
+if __name__ == "__main__":
+    main()
