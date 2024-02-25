@@ -1,10 +1,11 @@
+from selenium.webdriver.common.by import By
 from models.base import PriceExtractor, TitleExtractor, DisplayData
-from util.functions import initialize_driver, extract_product_data
+from util.functions import initialize_driver, web_functions, auto_scroll
 
 # Global variables
 page_url = 'https://www.atlanticsuperstore.ca/food/fruits-vegetables/fresh-vegetables/c/28195'
-# next_page_element = ''
 
+# Main class for Fresh Vegetables section
 class FreshExtractor:
     def __init__(self):
         self.driver = None
@@ -13,18 +14,33 @@ class FreshExtractor:
         # Initialize the WebDriver
         self.driver = initialize_driver(page_url)
 
-        # self.driver.find_element(By.CSS)
-        # next_page(self.driver)
+        # Initializing lists and display object
+        all_prices = []
+        all_titles = []
+        display = DisplayData()
 
         # Open a webpage and perform actions
-        extract_product_data(self.driver)
+        web_functions(self.driver)
 
         # Create instances of PriceExtractor and TitleExtractor and extract data
         price_extractor = PriceExtractor(self.driver)
         title_extractor = TitleExtractor(self.driver)
-        display = DisplayData()
 
-        print(display.display_prices_and_titles(prices=price_extractor.extract_data(), titles=title_extractor.extract_data()))
+        if(self.driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Next Page"]')):
+            for x in range(6):
+                all_prices.append(price_extractor.extract_data())
+                all_titles.append(title_extractor.extract_data())
+                nextPageBtn = self.driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Next Page"]')
+                nextPageBtn.click()
+                auto_scroll(self.driver)
+
+            # Looping through the list array to display list items with the prices
+            for price, title in zip(all_prices, all_titles):
+                print(display.display_prices_and_titles(price, title))
+
+        else:
+            # Printing the list from a page if all products are on the same page
+            print(display.display_prices_and_titles(prices=price_extractor.extract_data(), titles=title_extractor.extract_data()))
 
         # Close the browser
         self.driver.quit()

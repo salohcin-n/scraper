@@ -21,7 +21,7 @@ class PriceExtractor(BaseExtractor):
             prices = [element.text for element in price_elements]
 
             # Filter out prices with "sale"
-            prices = [price for price in prices if "sale" not in price.lower()]
+            prices = [price for price in prices if "sale" and "about" not in price.lower()]
 
             return prices
 
