@@ -1,7 +1,7 @@
 from models.vegetables.fresh import FreshExtractor
 
 def main():
-    # Create an instance of FreshExtractor
+    # Create an instance of a model
     extractor = FreshExtractor()
 
     # Run the extraction process

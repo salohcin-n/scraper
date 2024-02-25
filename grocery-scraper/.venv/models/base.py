@@ -7,6 +7,7 @@ class BaseExtractor:
     def extract_data(self):
         raise NotImplementedError("extract_data method must be implemented in subclass")
 
+# Extracting product prices from elements on the webpage
 class PriceExtractor(BaseExtractor):
     def __init__(self, driver):
         super().__init__(driver)
@@ -28,6 +29,7 @@ class PriceExtractor(BaseExtractor):
             print(f"An error occurred while extracting prices: {str(e)}")
             return []
 
+# Extracting product titles from elements on the webpage
 class TitleExtractor(BaseExtractor):
     def __init__(self, driver):
         super().__init__(driver)
@@ -46,6 +48,7 @@ class TitleExtractor(BaseExtractor):
             print(f"An error occurred while extracting titles: {str(e)}")
             return []
 
+# Class to display data from each extraction
 class DisplayData:
     @staticmethod
     def display_prices_and_titles(prices, titles):

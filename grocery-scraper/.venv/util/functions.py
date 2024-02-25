@@ -3,11 +3,13 @@ from selenium.webdriver.common.by import By
 from models.base import PriceExtractor, TitleExtractor
 import time
 
-def initialize_driver():
-    # Initialize the WebDriver
+# Initializing Chrome Web Driver
+def initialize_driver(url):
     driver = webdriver.Chrome()
+    driver.get(url)
     return driver
 
+# Function for auto scrolling down the page
 def auto_scroll(driver):
     y = 1000
     for timer in range(0, 10):
@@ -15,11 +17,9 @@ def auto_scroll(driver):
         y += 500
         time.sleep(1)
 
-def auto_scroll_and_extract_prices(driver):
+# Function for extracting data
+def extract_product_data(driver):
     try:
-        # Open a webpage
-        driver.get('https://www.atlanticsuperstore.ca/')
-
         # Wait for the elements to load (you can use WebDriverWait for more advanced waiting)
         time.sleep(5)
         privacyBtn = driver.find_element(By.CSS_SELECTOR, 'button[class="lds__privacy-policy__btnClose"]')
