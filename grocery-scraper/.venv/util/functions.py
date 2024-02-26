@@ -5,18 +5,21 @@ import time
 
 # Initializing Chrome Web Driver
 def initialize_driver(url):
-    driver = webdriver.Chrome()
-    driver.get(url)
-    return driver
+    try:
+        driver = webdriver.Chrome()
+        driver.get(url)
+        return driver
+    except:
+        print("Issue with webdriver")
 
 # Function for auto scrolling down the page
 def auto_scroll(driver):
     try:
         y = 1000
         time.sleep(2)
-        for timer in range(0, 20):
+        for timer in range(0, 2):
             driver.execute_script("window.scrollTo(0, " + str(y) + ")")
-            y += 150
+            y += 2000
             time.sleep(0.5)
     except:
         print("Error with auto_scroll function")
