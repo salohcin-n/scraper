@@ -42,6 +42,7 @@ def web_functions(driver):
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
+# Function will remove the privacy policy popup
 def privacy_btn(driver):
     try:
         privacyBtn = driver.find_element(By.CSS_SELECTOR, 'button[class="lds__privacy-policy__btnClose"]')
@@ -49,10 +50,12 @@ def privacy_btn(driver):
     except:
         print("Error with privacy button")
 
-# def next_page(driver):
-#     try:
-#         nextPageBtn = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Next Page"]')
-#
-#
-#     except:
-#         print(f"An error occurred: {str(e)}")
+# Function will return the last page number of the called section
+def last_page(driver):
+    try:
+        last_page_btn = driver.find_elements(By.CSS_SELECTOR, 'nav[aria-label="Pagination"] > button')
+        last_page = int(last_page_btn[-2].text) # Grabbing second to last text value. -1 = last
+
+        return last_page
+    except:
+        print(f"An error occurred: {str(e)}")

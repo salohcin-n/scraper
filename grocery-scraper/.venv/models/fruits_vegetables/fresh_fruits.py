@@ -1,14 +1,15 @@
 from selenium.webdriver.common.by import By
 from models.base import PriceExtractor, TitleExtractor, DisplayData
-from util.functions import initialize_driver, web_functions, auto_scroll
+from util.functions import initialize_driver, web_functions, auto_scroll, last_page
 
 # Global variables
-page_url = 'https://www.atlanticsuperstore.ca/food/fruits-vegetables/fresh-vegetables/c/28195'
+page_url = 'https://www.atlanticsuperstore.ca/food/fruits-vegetables/fresh-fruits/c/28194'
 
 # Main class for Fresh Vegetables section
-class FreshExtractor:
-    def __init__(self):
-        self.driver = None
+class FreshFruitExtractor:
+    # Method to self initialize the driver - Currently running from scraper.py
+    # def __init__(self):
+    #     self.driver = initialize_driver(page_url)
 
     def run(self):
         try:
@@ -28,7 +29,7 @@ class FreshExtractor:
             title_extractor = TitleExtractor(self.driver)
 
             if(self.driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Next Page"]')):
-                for x in range(6):
+                for x in range(last_page(driver=self.driver)):
                     all_prices.append(price_extractor.extract_data())
                     all_titles.append(title_extractor.extract_data())
                     nextPageBtn = self.driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Next Page"]')
