@@ -9,7 +9,7 @@ def main():
 
         # Run the extraction process
         veggie_extractor.run()
-        fruit_extractor.run()
+        # fruit_extractor.run()
 
     except:
         print("Issue with main scraper run")

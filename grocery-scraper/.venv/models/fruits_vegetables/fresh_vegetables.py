@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from models.base import PriceExtractor, TitleExtractor, DisplayData
 from util.functions import initialize_driver, web_functions, auto_scroll, last_page
+from data.data import saveVeggieData
 
 # Global variables
 page_url = 'https://www.atlanticsuperstore.ca/food/fruits-vegetables/fresh-vegetables/c/28195'
@@ -20,6 +21,7 @@ class FreshVeggieExtractor:
             # Initializing lists and display object
             all_prices = []
             all_titles = []
+            veg_data = []
             display = DisplayData()
 
             # Open a webpage and perform actions
@@ -29,6 +31,7 @@ class FreshVeggieExtractor:
             price_extractor = PriceExtractor(self.driver)
             title_extractor = TitleExtractor(self.driver)
 
+            # If the next page button exists, loop through the max pages and extract data
             if(self.driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Next Page"]')):
                 for x in range(last_page(driver=self.driver)):
                     all_prices.append(price_extractor.extract_data())
@@ -39,7 +42,28 @@ class FreshVeggieExtractor:
 
                 # Looping through the list array to display list items with the prices
                 for price, title in zip(all_prices, all_titles):
-                    print(display.display_prices_and_titles(price, title))
+                    veg_data += title, price
+
+                print(veg_data)
+
+                # # Flattening data for easier useability
+                # flat_data = [item for sublist in data for item in sublist]
+                #
+                # # Extracting titles and prices
+                # titles = flat_data[::2]
+                # prices = flat_data[1::2]
+                #
+                # # Create a DataFrame
+                # df = pd.DataFrame({
+                #     'ID': range(1, len(titles) + 1),
+                #     'Name': titles,
+                #     'Price': prices
+                # })
+                # veg_data = [all_titles, all_prices]
+
+                # Passing the data frame to my database directory
+                # saveVeggieData(df)
+                # print(df)
 
             else:
                 # Printing the list from a page if all products are on the same page
