@@ -48,6 +48,24 @@ class TitleExtractor(BaseExtractor):
             print(f"An error occurred while extracting titles: {str(e)}")
             return []
 
+class DataExtractor(BaseExtractor):
+
+    def extract_data(self):
+        try:
+            title_elements = self.driver.find_elements(By.CSS_SELECTOR, 'h3[data-testid="product-title"]')
+            price_elements = self.driver.find_elements(By.CSS_SELECTOR, 'p[data-testid="price"]')
+
+
+            # prices = [element.text for element in price_elements]
+            # data = [(t.text for t in title_elements), (p.text for p in price_elements)]
+            data = [(t.text, p.text) for t, p in zip(title_elements, price_elements)]
+            return data
+
+        except:
+            print(f"An error occured with the title, price extractor {str(e)}")
+            return []
+
+
 # Class to display data from each extraction
 class DisplayData:
     @staticmethod
