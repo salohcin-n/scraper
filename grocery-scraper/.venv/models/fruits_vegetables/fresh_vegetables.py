@@ -36,33 +36,8 @@ class FreshVeggieExtractor:
                     nextPageBtn.click()
                     auto_scroll(self.driver)
 
-                saveVeggieData(veg_data)
-
-
-                # Looping through the list array to display list items with the prices
-                # for price, title in zip(all_prices, all_titles):
-                #     veg_data += title, price
-
-                # print(veg_data)
-
-                # # Flattening data for easier useability
-                # flat_data = [item for sublist in data for item in sublist]
-                #
-                # # Extracting titles and prices
-                # titles = flat_data[::2]
-                # prices = flat_data[1::2]
-                #
-                # # Create a DataFrame
-                # df = pd.DataFrame({
-                #     'ID': range(1, len(titles) + 1),
-                #     'Name': titles,
-                #     'Price': prices
-                # })
-                # veg_data = [all_titles, all_prices]
-
-                # Passing the data frame to my database directory
-                # saveVeggieData(df)
-                # print(df)
+                # 2nd parameter is the table name
+                saveVeggieData(veg_data, "fresh_vegetables")
 
             else:
                 # Printing the list from a page if all products are on the same page
