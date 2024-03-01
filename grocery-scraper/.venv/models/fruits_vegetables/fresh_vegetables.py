@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from models.base import PriceExtractor, TitleExtractor, DisplayData, DataExtractor
 from util.functions import initialize_driver, web_functions, auto_scroll, last_page
-from data.data import saveVeggieData
+from data.data import saveData
 
 # Global variables
 page_url = 'https://www.atlanticsuperstore.ca/food/fruits-vegetables/fresh-vegetables/c/28195'
@@ -37,7 +37,7 @@ class FreshVeggieExtractor:
                     auto_scroll(self.driver)
 
                 # 2nd parameter is the table name
-                saveVeggieData(veg_data, "fresh_vegetables")
+                saveData(veg_data, '''fresh_vegetables''')
 
             else:
                 # Printing the list from a page if all products are on the same page
@@ -48,4 +48,4 @@ class FreshVeggieExtractor:
 
         # End of try/except error handling
         except:
-            print("Unexpected error with run function")
+            print("Unexpected error with run function - fresh_vegetables")
