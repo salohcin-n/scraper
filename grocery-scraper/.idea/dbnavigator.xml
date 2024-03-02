@@ -17,8 +17,8 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="1fa9dbaa-0e87-41b0-a885-71f1b47626f9">
-      <console name="Connection" type="STANDARD" schema="loblaws" session="Main"><![CDATA[select fresh_vegetables.id from loblaws.fresh_vegetables]]></console>
-      <console name="Connection 1" type="STANDARD" schema="loblaws" session="Main"><![CDATA[select * from loblaws.fresh_vegetables]]></console>
+      <console name="Connection" type="STANDARD" schema="loblaws" session="Main">select fresh_vegetables.id from loblaws.fresh_vegetables</console>
+      <console name="Connection 1" type="STANDARD" schema="loblaws" session="Main">select * from loblaws.fresh_vegetables</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -39,6 +39,9 @@
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
+  </component>
+  <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
+    <recently-used-interfaces />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
