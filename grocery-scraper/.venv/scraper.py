@@ -11,13 +11,13 @@ def main():
         fruit_extractor = FreshFruitExtractor()
         packaged_salad_extractor = PackagedSaladAndDressingsExtractor()
 
-
         # Run the extraction process
         veggie_extractor.run()
         fruit_extractor.run()
         packaged_salad_extractor.run()
 
-        # Uncomment this line to print data to the console -for testing
+        # Check the function for errors before running.
+        # Uncomment this line to print data to the console -for testing -may DELETE/DROP tables
         # printData()
     except:
         print("Issue with main scraper run")

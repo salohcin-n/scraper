@@ -38,6 +38,7 @@ def web_functions(driver):
         time.sleep(5)
         privacy_btn(driver)
         auto_scroll(driver)
+        survey_btn(driver)
 
     except Exception as e:
         print(f"An error occurred: {str(e)}")
@@ -49,6 +50,16 @@ def privacy_btn(driver):
         privacyBtn.click()
     except:
         print("Error with privacy button")
+
+# Function will close the survey window if prompt appears
+def survey_btn(driver):
+    try:
+        closeSurveyBtn = driver.find_elements(By.CSS_SELECTOR, 'button[aria-label="Close Survey"]')
+
+        if closeSurveyBtn:
+            closeSurveyBtn[0].click()
+    except:
+        print("Error with closing the survey prompt")
 
 # Function will return the last page number of the called section
 def last_page(driver):
