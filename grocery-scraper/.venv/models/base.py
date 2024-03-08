@@ -54,7 +54,7 @@ class DataExtractor(BaseExtractor):
     def extract_data(self):
         try:
             title_elements = self.driver.find_elements(By.CSS_SELECTOR, 'h3[data-testid="product-title"]')
-            price_elements = self.driver.find_elements(By.CSS_SELECTOR, 'p[data-testid="price"]')
+            price_elements = self.driver.find_elements(By.CSS_SELECTOR, 'span[data-testid="regular-price"] > span')
 
             data = [(t.text, p.text) for t, p in zip(title_elements, price_elements)]
             return data

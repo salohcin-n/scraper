@@ -23,14 +23,8 @@ class HerbExtractor:
             # Open a webpage and perform actions
             web_functions(self.driver)
 
-            # Create instances of PriceExtractor and TitleExtractor and extract data
+            #Adding extracted data to a tuple list.
             data_extractor = DataExtractor(self.driver)
-
-
-
-
-                # Printing the list from a page if all products are on the same page
-                # print(display.display_prices_and_titles(prices=price_extractor.extract_data(), titles=title_extractor.extract_data()))
             herb_data.append(data_extractor.extract_data())
 
             # Save data and Close the browser

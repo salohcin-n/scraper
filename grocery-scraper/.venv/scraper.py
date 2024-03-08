@@ -7,17 +7,12 @@ from data.data import printData
 
 def main():
     try:
-        # # Create an instance of a model
-        # herb_extractor = HerbExtractor()
-        #
-        # # Run the extraction process
-        # herb_extractor.run()
-
         # Create instances of the scrapers
         scrapers = [
             FreshVeggieExtractor(),
             FreshFruitExtractor(),
-            PackagedSaladAndDressingsExtractor()
+            PackagedSaladAndDressingsExtractor(),
+            HerbExtractor()
         ]
 
         # Run each scraper
