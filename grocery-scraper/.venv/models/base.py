@@ -56,7 +56,12 @@ class DataExtractor(BaseExtractor):
             title_elements = self.driver.find_elements(By.CSS_SELECTOR, 'h3[data-testid="product-title"]')
             price_elements = self.driver.find_elements(By.CSS_SELECTOR, 'span[data-testid="regular-price"] > span')
 
-            data = [(t.text, p.text) for t, p in zip(title_elements, price_elements)]
+            data = []
+
+            for title, price in zip(title_elements, price_elements):
+                # Extracting the price text after the money symbol ('$')
+                price_text = price.text.split('$')[-1].strip()
+                data.append((title.text, price_text))
             return data
         except:
             print(f"An error occured with the title, price extractor {str(e)}")

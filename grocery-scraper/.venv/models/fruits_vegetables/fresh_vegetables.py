@@ -26,6 +26,8 @@ class FreshVeggieExtractor:
             web_functions(self.driver)
 
             # Create instances of data extractor
+            price_extractor = PriceExtractor(self.driver)
+            title_extractor = TitleExtractor(self.driver)
             data_extractor = DataExtractor(self.driver)
 
             # If the next page button exists, loop through the max pages and extract data
