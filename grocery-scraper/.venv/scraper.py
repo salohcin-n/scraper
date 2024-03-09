@@ -3,6 +3,7 @@ from models.fruits_vegetables.fresh_vegetables import FreshVeggieExtractor
 from models.fruits_vegetables.fresh_fruits import FreshFruitExtractor
 from models.fruits_vegetables.packaged_salad import PackagedSaladAndDressingsExtractor
 from models.fruits_vegetables.herbs import HerbExtractor
+from models.fruits_vegetables.fresh_cut import FreshCutProduceExtractor
 from data.data import printData
 
 def main():
@@ -12,7 +13,8 @@ def main():
             FreshVeggieExtractor(),
             FreshFruitExtractor(),
             PackagedSaladAndDressingsExtractor(),
-            HerbExtractor()
+            HerbExtractor(),
+            FreshCutProduceExtractor()
         ]
 
         # Run each scraper
