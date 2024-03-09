@@ -1,16 +1,29 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.by import By
 from models.base import PriceExtractor, TitleExtractor
 import time
 
 # Initializing Chrome Web Driver
 def initialize_driver(url):
+    global HEADLESS_MODE
     try:
-        driver = webdriver.Chrome()
+        # Set Chrome options to run headless
+        chrome_options = Options()
+        # chrome_options.add_argument("--headless")  # Run Chrome in headless mode
+        # chrome_options.add_argument("--disable-gpu")  # Disable GPU acceleration, sometimes necessary in headless mode
+        # chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
+
+        driver = webdriver.Chrome(options=chrome_options)
         driver.get(url)
         return driver
-    except:
-        print("Issue with webdriver")
+    except WebDriverException as e:
+        print("Issue with webdriver:", e)
+        return None
+    except Exception as e:
+        print("An unexpected error occurred:", e)
+        return None
 
 # Function for auto scrolling down the page
 def auto_scroll(driver):

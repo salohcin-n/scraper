@@ -43,6 +43,7 @@ def printData():
     # This line will delete all data from the table for testing
     # cursor.execute('''DELETE FROM fresh_fruits;''')
     # cursor.execute('''DELETE FROM fresh_vegetables;''')
+    # cursor.execute('''DELETE FROM herbs;''')
 
     try:
         # Execute the SELECT statement
