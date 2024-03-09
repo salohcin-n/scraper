@@ -30,4 +30,4 @@ class FreshCutProduceExtractor:
 
         # End of try/except error handling
         except Exception as e:
-            print(f"Unexpected error with run function - herbs: {str(e)}")
+            print(f"Unexpected error with run function - fresh cut: {str(e)}")
