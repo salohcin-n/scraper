@@ -6,7 +6,6 @@ def saveData(data, table):
     conn = sqlite3.connect('loblaws.db')
     cursor = conn.cursor()
 
-
     cursor.execute(f'''CREATE TABLE IF NOT EXISTS {table} (
                         id INTEGER PRIMARY KEY,
                         name TEXT,
