@@ -7,7 +7,8 @@ import time
 
 # Initializing Chrome Web Driver
 def initialize_driver(url):
-    global HEADLESS_MODE
+    # Global varible to toggle headless mode, not implemented yet.
+    # global HEADLESS_MODE
     try:
         # Set Chrome options to run headless
         chrome_options = Options()
