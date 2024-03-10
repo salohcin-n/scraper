@@ -1,11 +1,11 @@
 import time
-from util.scraper_run import SCRAPERS
+from util.scraper_run import FRUIT_AND_VEGGIE_SCRAPERS
 from data.data import printData
 
 def main():
     try:
         # Run each scraper
-        for scraper_instance in SCRAPERS:
+        for scraper_instance in FRUIT_AND_VEGGIE_SCRAPERS:
             scraper_instance.run()
 
         # Check the function for errors before running.
