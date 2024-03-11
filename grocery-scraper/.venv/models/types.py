@@ -9,6 +9,8 @@ class GroceryType(Enum):
     FRESH_CUT = 'fresh cut fruits & veggies'
     SALAD_DRESSING = 'packaged salad dressings'
     SALADS = 'in-store salads'
+    # Meat tpyes:
+    CHICKEN_TURKEY = 'chicken & turkey'
 
 # Example usage:
 # print(GroceryType.JUICE_AND_SMOOTHIES.value)  # Output: juice & smoothies

@@ -7,6 +7,7 @@ from models.fruits_vegetables.fresh_cut import FreshCutProduceExtractor
 from models.fruits_vegetables.dried_fruits_nuts import DriedFruitsAndNutsExtractor
 from models.fruits_vegetables.in_store_salads import InStoreSaladsExtractor
 from models.fruits_vegetables.fresh_juice_smoothie import FreshJuiceAndSmoothiesExtractor
+from models.meat.chicken_turkey import ChickenTurkeyExtractor
 
 # Define a list of all scraper classes
 FRUIT_AND_VEGGIE_SCRAPERS = [
@@ -18,4 +19,8 @@ FRUIT_AND_VEGGIE_SCRAPERS = [
     DriedFruitsAndNutsExtractor(),
     InStoreSaladsExtractor(),
     FreshJuiceAndSmoothiesExtractor()
+]
+
+MEAT_SCRAPERS = [
+    ChickenTurkeyExtractor()
 ]
