@@ -37,6 +37,41 @@ def saveData(data, type):
     conn.commit()
     conn.close()
 
+def saveMeatData(data, type):
+    conn = sqlite3.connect('loblaws.db')
+    cursor = conn.cursor()
+    table = "meat"
+
+    cursor.execute(f'''CREATE TABLE IF NOT EXISTS {table} (
+                        id INTEGER PRIMARY KEY,
+                        name TEXT,
+                        price REAL,
+                        type TEXT
+                    )''')
+
+    try:
+        for sublist in data:
+            for title, price in sublist:
+                try:
+                    # Check if the record with the specified name exists
+                    cursor.execute(f'SELECT * FROM {table} WHERE name = ?', (title,))
+                    existing_record = cursor.fetchone()
+
+                    if existing_record:
+                        # If the record exists, update it
+                        cursor.execute(f'''UPDATE {table} SET price = ? WHERE name = ?''', (price, title))
+                    else:
+                        # If the record doesn't exist, insert a new one
+                        cursor.execute(f'''INSERT INTO {table} (name, price, type) VALUES (?, ?, ?)''', (title, price, type))
+                except sqlite3.Error as e:
+                    print("Error inserting/updating data:", e)
+    except:
+        print("Error with data")
+
+
+    conn.commit()
+    conn.close()
+
 # Method to print data to the console
 def printData():
     conn = sqlite3.connect('loblaws.db')
