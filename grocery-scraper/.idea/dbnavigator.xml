@@ -17,8 +17,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="1fa9dbaa-0e87-41b0-a885-71f1b47626f9">
-      <console name="Connection" type="STANDARD" schema="loblaws" session="Main">select fresh_vegetables.id from loblaws.fresh_vegetables</console>
-      <console name="Connection 1" type="STANDARD" schema="loblaws" session="Main">select * from loblaws.fresh_vegetables</console>
+      <console name="Connection" type="STANDARD" schema="loblaws" session="Main"><![CDATA[SELECT *
+FROM produce
+WHERE type = 'in-store salads';]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -28,7 +29,9 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="1fa9dbaa-0e87-41b0-a885-71f1b47626f9" />
+    <connection id="1fa9dbaa-0e87-41b0-a885-71f1b47626f9">
+      <session name="Session 1" id="6827a251-7809-4aad-af7d-a5fa9012d5b5" />
+    </connection>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="1fa9dbaa-0e87-41b0-a885-71f1b47626f9" dataset="loblaws.fresh_vegetables" active-filter-id="" />
@@ -62,7 +65,7 @@
           <tns-folder value="" />
           <tns-profile value="" />
           <files>
-            <file path="C:\GitHub\scraper\grocery-scraper\.venv\data\loblaws.db" schema="loblaws" />
+            <file path="C:\GitHub\scraper\grocery-scraper\.venv\loblaws.db" schema="loblaws" />
           </files>
           <type value="NONE" />
           <user value="" />
