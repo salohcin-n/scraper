@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from models.base import DataExtractor
+from models.types import GroceryType
 from util.functions import initialize_driver, web_functions, auto_scroll, last_page
 from data.data import saveData
 
@@ -25,7 +26,7 @@ class DriedFruitsAndNutsExtractor:
             dried_fruits_nuts_data.append(data_extractor.extract_data())
 
             # Save data and Close the browser
-            saveData(dried_fruits_nuts_data, '''dried_fruits_and_nuts''')
+            saveData(dried_fruits_nuts_data, GroceryType.DRIED_NUTS.value)
             self.driver.quit()
 
         # End of try/except error handling

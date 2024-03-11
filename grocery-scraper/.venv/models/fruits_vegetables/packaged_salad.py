@@ -1,16 +1,14 @@
 from selenium.webdriver.common.by import By
 from models.base import DisplayData, DataExtractor
+from models.types import GroceryType
 from util.functions import initialize_driver, web_functions, auto_scroll, last_page
 from data.data import saveData
 
 # Global variables
 page_url = 'https://www.atlanticsuperstore.ca/food/fruits-vegetables/packaged-salad-dressing/c/28196'
 
-# Main class for Fresh Vegetables section
+# Main class for Packaged Salads section
 class PackagedSaladAndDressingsExtractor:
-    # Method to self initialize the driver - Currently running from scraper.py
-    # def __init__(self):
-    #     self.driver = initialize_driver(page_url)
 
     def run(self):
         try:
@@ -34,7 +32,7 @@ class PackagedSaladAndDressingsExtractor:
                     nextPageBtn.click()
                     auto_scroll(self.driver)
 
-                saveData(packaged_salad_data, '''packaged_salad_and_dressings''')
+                saveData(packaged_salad_data, GroceryType.SALAD_DRESSING.value)
 
             else:
                 # Printing the list from a page if all products are on the same page

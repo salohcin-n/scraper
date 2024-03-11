@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from models.base import PriceExtractor, TitleExtractor, DisplayData, DataExtractor
+from models.types import GroceryType
 from util.functions import initialize_driver, web_functions, auto_scroll, last_page
 from data.data import saveData
 
@@ -39,7 +40,7 @@ class FreshVeggieExtractor:
                     auto_scroll(self.driver)
 
                 # 2nd parameter is the table name
-                saveData(veg_data, '''fresh_vegetables''')
+                saveData(veg_data, GroceryType.VEGETABLES.value)
 
             else:
                 # Printing the list from a page if all products are on the same page

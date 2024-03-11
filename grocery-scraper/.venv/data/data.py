@@ -2,14 +2,16 @@ import sqlite3
 
 # This method accepts a scraped object & a table name variable
 # It will then create/update the database with the new scraped data.
-def saveData(data, table):
+def saveData(data, type):
     conn = sqlite3.connect('loblaws.db')
     cursor = conn.cursor()
+    table = "produce"
 
     cursor.execute(f'''CREATE TABLE IF NOT EXISTS {table} (
                         id INTEGER PRIMARY KEY,
                         name TEXT,
-                        price REAL
+                        price REAL,
+                        type TEXT
                     )''')
 
     try:
@@ -25,7 +27,7 @@ def saveData(data, table):
                         cursor.execute(f'''UPDATE {table} SET price = ? WHERE name = ?''', (price, title))
                     else:
                         # If the record doesn't exist, insert a new one
-                        cursor.execute(f'''INSERT INTO {table} (name, price) VALUES (?, ?)''', (title, price))
+                        cursor.execute(f'''INSERT INTO {table} (name, price, type) VALUES (?, ?, ?)''', (title, price, type))
                 except sqlite3.Error as e:
                     print("Error inserting/updating data:", e)
     except:
@@ -41,9 +43,9 @@ def printData():
     cursor = conn.cursor()
 
     # This line will delete all data from the table for testing
-    # cursor.execute('''DELETE FROM fresh_fruits;''')
+    # cursor.execute('''DELETE FROM produce;''')
     # cursor.execute('''DELETE FROM fresh_vegetables;''')
-    # cursor.execute('''DELETE FROM herbs;''')
+    # cursor.execute('''DELETE FROM fresh_juice_and_smoothies;''')
 
     try:
         # Execute the SELECT statement
