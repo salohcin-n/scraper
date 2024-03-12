@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from models.base import DataExtractor
 from models.types import GroceryType
 from util.functions import initialize_driver, web_functions, auto_scroll, last_page
-from data.data import saveData
+from data.data import saveProduceData
 
 # Global variables
 page_url = 'https://www.atlanticsuperstore.ca/food/fruits-vegetables/dried-fruits-nuts/c/28199'
@@ -26,7 +26,7 @@ class DriedFruitsAndNutsExtractor:
             dried_fruits_nuts_data.append(data_extractor.extract_data())
 
             # Save data and Close the browser
-            saveData(dried_fruits_nuts_data, GroceryType.DRIED_NUTS.value)
+            saveProduceData(dried_fruits_nuts_data, GroceryType.DRIED_NUTS.value)
             self.driver.quit()
 
         # End of try/except error handling

@@ -4,6 +4,35 @@ from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.by import By
 from models.base import PriceExtractor, TitleExtractor
 import time
+import threading
+
+def timer():
+    start_time = time.time()  # Get the current time in seconds since the epoch
+
+    try:
+        while True:
+            elapsed_time = time.time() - start_time
+            print(f"Timer: {int(elapsed_time)} seconds elapsed", end='\r')
+            time.sleep(1)  # Sleep for 1 second
+    except KeyboardInterrupt:
+        # Handle KeyboardInterrupt (Ctrl+C)
+        print("\nTimer stopped.")
+
+class TimerThread(threading.Thread):
+    def __init__(self):
+        super().__init__()
+        self._stop_event = threading.Event()
+
+    def stop(self):
+        self._stop_event.set()
+
+    def run(self):
+        start_time = time.time()
+        while not self._stop_event.is_set():
+            elapsed_time = time.time() - start_time
+            print(f"Timer: {int(elapsed_time)} seconds elapsed", end='\r')
+            time.sleep(1)
+
 
 # Initializing Chrome Web Driver
 def initialize_driver(url):

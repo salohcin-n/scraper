@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from models.base import PriceExtractor, TitleExtractor, DisplayData, DataExtractor
 from models.types import GroceryType
 from util.functions import initialize_driver, web_functions, auto_scroll, last_page
-from data.data import saveData, saveMeatData
+from data.data import saveMeatData
 
 # Global variables
 page_url = 'https://www.atlanticsuperstore.ca/food/meat/chicken-turkey/c/28214'

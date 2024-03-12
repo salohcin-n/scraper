@@ -2,7 +2,7 @@ import sqlite3
 
 # This method accepts a scraped object & a table name variable
 # It will then create/update the database with the new scraped data.
-def saveData(data, type):
+def saveProduceData(data, type):
     conn = sqlite3.connect('loblaws.db')
     cursor = conn.cursor()
     table = "produce"

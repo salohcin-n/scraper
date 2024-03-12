@@ -5,14 +5,13 @@ from data.data import printData
 def main():
     try:
         # Run each scraper
-        # for scraper_instance in FRUIT_AND_VEGGIE_SCRAPERS:
-        #     scraper_instance.run()
+        for scraper_instance in FRUIT_AND_VEGGIE_SCRAPERS:
+            scraper_instance.run()
 
         # Running the meat scrapers
         for scraper_instance in MEAT_SCRAPERS:
             scraper_instance.run()
 
-        # Check the function for errors before running.
         # Uncomment this line to print data to the console -for testing -may DELETE/DROP tables
         # printData()
     except:

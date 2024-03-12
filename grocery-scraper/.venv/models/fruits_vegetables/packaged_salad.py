@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from models.base import DisplayData, DataExtractor
 from models.types import GroceryType
 from util.functions import initialize_driver, web_functions, auto_scroll, last_page
-from data.data import saveData
+from data.data import saveProduceData
 
 # Global variables
 page_url = 'https://www.atlanticsuperstore.ca/food/fruits-vegetables/packaged-salad-dressing/c/28196'
@@ -32,7 +32,7 @@ class PackagedSaladAndDressingsExtractor:
                     nextPageBtn.click()
                     auto_scroll(self.driver)
 
-                saveData(packaged_salad_data, GroceryType.SALAD_DRESSING.value)
+                saveProduceData(packaged_salad_data, GroceryType.SALAD_DRESSING.value)
 
             else:
                 # Printing the list from a page if all products are on the same page
