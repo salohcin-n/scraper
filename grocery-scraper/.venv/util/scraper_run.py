@@ -12,7 +12,7 @@ from models.meat.chicken_turkey import ChickenTurkeyExtractor
 # Define a list of all scraper classes
 FRUIT_AND_VEGGIE_SCRAPERS = [
     FreshVeggieExtractor(),
-    FreshFruitExtractor(),
+    # FreshFruitExtractor(),
     PackagedSaladAndDressingsExtractor(),
     HerbExtractor(),
     FreshCutProduceExtractor(),
